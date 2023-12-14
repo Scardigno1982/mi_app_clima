@@ -11,10 +11,10 @@ describe('GET /clima', function() {
             .expect('Content-Type', /json/)
             .expect(200, done); 
     });
+});
 
-    after(() => {
-        if (server) {
-            server.close(); // Cerrar el servidor después de las pruebas
-        }
-    });
+after(() => {
+    if (server) {
+        server.close();
+    }
 });
