@@ -1,6 +1,5 @@
 const express = require('express');
 const axios = require('axios');
-
 const app = express();
 const PORT = 3000;
 
@@ -15,12 +14,12 @@ app.get('/clima', async (req, res) => {
     }
 });
 
-// Evitar que el servidor escuche durante las pruebas
+let server;
 if (process.env.NODE_ENV !== 'test') {
-    app.listen(PORT, () => {
+    server = app.listen(PORT, () => {
         console.log(`Server running on http://localhost:${PORT}`);
     });
 }
 
-module.exports = app; // Exporta la aplicación pruebas
+module.exports = { app, server }; // Exporta tanto app como server
 
